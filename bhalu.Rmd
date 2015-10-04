@@ -39,6 +39,9 @@ mxnp<-max(data4$lifeExp)
 
 matrix (c(mncl, mnch, mnnp, mcl, mch, mnp, mxcl, mxch, mxnp), nrow=3, ncol=3, dimnames=list(c("Chile", "China", "Nepal"), c("min", "mean", "max")))
 
+hist(data1$lifeExp, main="global Life Expectancy", xlab="Life Exp")
+hist(data1$lifeExp, breaks =3, main="global Life Expectancy", xlab="Life Exp")
+
 ```
 
 
