@@ -1,0 +1,45 @@
+---
+title: "bhalu"
+author: "Netra"
+date: "October 4, 2015"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+data1<-read.table(file= "~/workshop/output/combined_gapMinder.tsv", header=T)
+
+xlab<- "year"
+ylab<- "GDP"
+
+data2<-subset(data1,country=="Chile")
+data3<-subset(data1,country=="China")
+data4<-subset(data1,country=="Nepal")
+
+plot(data2$year, data2$gdpPercap, main="GDP Chile", xlab=xlab, ylab=ylab)
+plot(data3$year, data3$gdpPercap, main="GDP China", xlab=xlab, ylab=ylab)
+plot(data4$year, data4$gdpPercap, main="GDP Nepal", xlab=xlab, ylab=ylab)
+
+mncl<-min(data2$lifeExp)
+mnch<-min(data3$lifeExp)
+mnnp<-min(data4$lifeExp)
+
+mcl<-mean(data2$lifeExp)
+mch<-mean(data3$lifeExp)
+mnp<-mean(data4$lifeExp)
+
+mxcl<-max(data2$lifeExp)
+mxch<-max(data3$lifeExp)
+mxnp<-max(data4$lifeExp)
+
+matrix (c(mncl, mnch, mnnp, mcl, mch, mnp, mxcl, mxch, mxnp), nrow=3, ncol=3, dimnames=list(c("Chile", "China", "Nepal"), c("min", "mean", "max")))
+
+```
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
